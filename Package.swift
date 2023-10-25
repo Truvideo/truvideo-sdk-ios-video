@@ -1,32 +1,25 @@
 // swift-tools-version: 5.8
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "TruvideoSdkVideo",
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "TruvideoSdkVideo",
             targets: ["TruvideoSdkVideoTargets"]),
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
+    dependencies: [],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "TruvideoSdkVideo",
             url: "https://github.com/Truvideo/truvideo-sdk-ios-video/releases/download/0.0.1/TruvideoSdkVideo.xcframework.zip",
-            checksum: ""
+            checksum: "dd6e104896b4b5cce482dc5b8405cb9a04dbe7526c7ee45e3b3f07aeb06dfda5"
         ),
         .target(
             name: "TruvideoSdkVideoTargets",
             dependencies: [
-                "TruvideoSdkVideo"
+                .target(name: "TruvideoSdkVideo")
             ],
             path: "Sources"
         )
