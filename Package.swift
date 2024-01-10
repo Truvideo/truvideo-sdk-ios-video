@@ -10,28 +10,8 @@ let package = Package(
             targets: ["TruvideoSdkVideoTargets"]),
     ],
     dependencies: [
-                ffmpegkit,
-                libavcodec,
-                libavdevice,
-                libavfilter,
-                libavformat,
-                libavutil,
-                libswresample,
-                libswscale
     ],
     targets: [
-        .binaryTarget(
-            name: "TruvideoSdkVideo",
-            url: "https://github.com/Truvideo/truvideo-sdk-ios-video/releases/download/0.1.00/TruvideoSdkVideo.xcframework.zip",
-            checksum: "aba11b2119c56c3fd78a0726f19abe8ec08749c32c1e1d87c34cd92f98c16820"
-        ),
-        .target(
-            name: "TruvideoSdkVideoTargets",
-            dependencies: [
-                .target(name: "TruvideoSdkVideo")
-            ],
-            path: "Sources"
-        ),
         .binaryTarget(
             name: ffmpegkit,
             url: https://github.com/Truvideo/truvideo-sdk-ios-video-utils/releases/download/0.0.2/ffmpegkit.xcframework.zip,
@@ -71,6 +51,26 @@ let package = Package(
             name: libswscale,
             url: https://github.com/Truvideo/truvideo-sdk-ios-video-utils/releases/download/0.0.2/libswscale.xcframework.zip,
             checksum: 8a7d21ecf1620acf6e806beb6c1cd2f42cf8a1b98cd64ef071287d68f0bdc198
-        )
+        ),
+        .binaryTarget(
+            name: "TruvideoSdkVideo",
+            url: "https://github.com/Truvideo/truvideo-sdk-ios-video/releases/download/0.1.01/TruvideoSdkVideo.xcframework.zip",
+            checksum: "0d2de599978c9d78633f292141e39a08684bdb92ab9a7aeee5c55698bb6e8398"
+        ),
+        .target(
+            name: "TruvideoSdkVideoTargets",
+            dependencies: [
+                .target(name: "TruvideoSdkVideo"),
+                .target(name: "ffmpegkit"),
+                .target(name: "libavcodec"),
+                .target(name: "libavdevice"),
+                .target(name: "libavfilter"),
+                .target(name: "libavformat"),
+                .target(name: "libavutil"),
+                .target(name: "libswresample"),
+                .target(name: "libswscale")               
+            ],
+            path: "Sources"
+        ),
     ]
 )
